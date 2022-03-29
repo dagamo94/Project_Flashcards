@@ -5,6 +5,7 @@ import {listDecks} from "../utils/api/index.js";
 import { Switch, Route } from "react-router-dom";
 import Home from "../Components/Home";
 import DeckPage from "../Components/Decks/DeckPage";
+import StudyPage from "../Components/StudyPage";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
@@ -30,7 +31,7 @@ function Layout() {
   }, []);
 
   return (
-    <>
+    <div>
       <Header />
       <div className="container">
         {/* TODO: Implement the screen starting here */}
@@ -38,6 +39,10 @@ function Layout() {
         <Switch>
           <Route exact path="/">
             <Home decks={decks}/>
+          </Route>
+
+          <Route path="/decks/:deckId/study">
+            <StudyPage />
           </Route>
 
           <Route path="/decks/:deckId">
@@ -49,7 +54,7 @@ function Layout() {
           </Route>
         </Switch>
       </div>
-    </>
+    </div>
   );
 }
 
