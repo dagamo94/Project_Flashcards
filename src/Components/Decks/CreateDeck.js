@@ -39,12 +39,14 @@ export default function CreateDeck(){
 
     // RETURN DECKFORM COMPONENT
     return (
-        
-        <DeckForm 
-            formData={formData}
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-        />
+        <div>
+            <h2>Create Deck</h2>
+            <DeckForm 
+                formData={formData}
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+            />
+        </div>
     )
 
 }

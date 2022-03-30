@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { readDeck } from "../../utils/api/index.js";
+import { deleteDeck, readDeck } from "../../utils/api/index.js";
 import { deleteCard } from "../../utils/api/index.js";
 import Breadcrumb from "../Common/Breadcrumb.js";
 import Card from "../Cards/Card";
@@ -44,13 +44,20 @@ function DeckPage() {
         return () => ac.abort();
     }, []);
 
+    async function handleDeckDelete(e){
+        e.preventDefault();
+        if(window.confirm("Delete this deck?\n\nYou will not be able to recover it.")){
+            await deleteDeck(deckId);
+            history.push('/');
+            history.go(0);
+        }
+    }
+
     console.log("Params: ", useParams());
     return (
         <div className="container">
             <Breadcrumb />
-            Deck ID: {deckId}
-
-            {deck ? <DeckPageHeader deck={deck} /> : <p>Loading...</p>}
+            {deck ? <DeckPageHeader deck={deck} handleDeckDelete={handleDeckDelete} /> : <p>Loading...</p>}
 
             <div className="row">
                 <div className="col">

@@ -8,10 +8,11 @@ import DeckPage from "../Components/Decks/DeckPage";
 import StudyPage from "../Components/StudyPage";
 import CreateDeck from "../Components/Decks/CreateDeck";
 import AddCard from "../Components/Cards/AddCard";
+import EditCard from  "../Components/Cards/EditCard";
+import EditDeck from "../Components/Decks/EditDeck";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
-
 
   useEffect(() => {
     const ac = new AbortController();
@@ -47,12 +48,20 @@ function Layout() {
             <CreateDeck />
           </Route>
 
+          <Route path="/decks/:deckId/cards/:cardId/edit">
+            <EditCard />
+          </Route>
+
           <Route path="/decks/:deckId/cards/new">
             <AddCard />
           </Route>
 
           <Route path="/decks/:deckId/study">
             <StudyPage />
+          </Route>
+          
+          <Route path="/decks/:deckId/edit">
+            <EditDeck />
           </Route>
 
           <Route path="/decks/:deckId">

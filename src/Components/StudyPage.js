@@ -28,6 +28,7 @@ function StudyPage() {
                 setFlipped(flip => !flip);
             } else {
                 history.push("/");
+                history.go(0);
             }
         } else {
             setCurrCard(curr => curr + 1);

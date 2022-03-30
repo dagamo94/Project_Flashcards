@@ -2,48 +2,13 @@
   "decks": [
     {
       "id": 1,
-      "name": "Rendering in React",
+      "name": "Rendering in React - edit",
       "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
     },
     {
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
-    },
-    {
-      "name": "new deck",
-      "description": "description",
-      "id": 3
-    },
-    {
-      "name": "new deck",
-      "description": "descrition",
-      "id": 4
-    },
-    {
-      "name": "new decj",
-      "description": "descriptino",
-      "id": 5
-    },
-    {
-      "name": "new deck 1",
-      "description": "description for deck 1",
-      "id": 6
-    },
-    {
-      "name": "test deck 1",
-      "description": "new deck",
-      "id": 7
-    },
-    {
-      "name": "New deck using reusable form component",
-      "description": "reusable form description",
-      "id": 8
-    },
-    {
-      "name": "Deck using new initial form state with an empty array for cards",
-      "description": "description for deck with empty cards array being passed in",
-      "id": 9
     }
   ],
   "cards": [
@@ -61,8 +26,8 @@
     },
     {
       "id": 3,
-      "front": "How do you pass data 'down' to a React child component?",
-      "back": "As properties or props",
+      "front": "How do you pass data 'down' to a React child component? - edit",
+      "back": "As properties or props - edit",
       "deckId": 1
     },
     {
