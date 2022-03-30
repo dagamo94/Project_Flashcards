@@ -51,7 +51,7 @@ function StudyPage() {
 
         fetchDeck();
 
-        console.log("Cards", cards);
+        console.log("Cards", cards, cards.length);
         return () => ac.abort();
     }, []);
 
@@ -75,9 +75,9 @@ function StudyPage() {
 
     return (
         <div>
-            <Breadcrumb history={history} />
+            <Breadcrumb/>
             <h1>Study: {deckTitle}</h1>
-            {cards.length ? displayCards() : <p>Loading...</p>}
+            {displayCards()}
         </div>
     )
 }

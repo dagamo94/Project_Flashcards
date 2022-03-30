@@ -1,22 +1,12 @@
 // REUSABLE FORM COMPONENT FOR CREATE AND EDIT DECK COMPONENTS
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import { useHistory } from "react-router-dom";
 
-export default function DeckForm({handleSubmit, handleCancel, initialState}) {
+export default function DeckForm({handleSubmit, formData, handleChange}) {
+    const history = useHistory();
     
-
-    const [formData, setFormData] = useState({initialState});
-
-    const handleChange = event => {
-        const {target} = event;
-        setFormData({
-            ...formData,
-            [target.name]: target.value
-        });
-    };
-
     return (
-        <form name="deck" onSubmit={() => handleSubmit(formData)}>
+        <form name="deck" onSubmit={handleSubmit}>
             <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
@@ -42,8 +32,8 @@ export default function DeckForm({handleSubmit, handleCancel, initialState}) {
                     className="form-control"
                 />
             </div>
-            <Link to={`/`} className="btn btn-secondary" onClick={handleCancel}>cancel</Link>
-            <Link to={``} className="btn btn-primary" type="submit">Submit</Link>
+            <button className="btn btn-secondary" type="button" onClick={() => history.push('/')}>Cancel</button>
+            <button className="btn btn-primary" type="submit">Submit</button>
         </form>
     )
 }

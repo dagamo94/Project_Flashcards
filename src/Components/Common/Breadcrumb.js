@@ -1,7 +1,9 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
-export function Breadcrumb({history}){
-    const {pathname} = history.location;
+export function Breadcrumb(){
+
+    const {pathname} = useHistory().location;
 
     return (
         <div>

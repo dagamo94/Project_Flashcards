@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {readDeck} from "../../utils/api/index.js";
 import Card from "../Cards/Card";
+import { Breadcrumb } from "../Common/Breadcrumb.js";
 
 
 function DeckPage() {
@@ -31,8 +32,9 @@ function DeckPage() {
     console.log("Params: ", useParams());
     return (
         <div>
-            card
-            
+            <Breadcrumb/>
+            Deck ID: {deckId}
+            {/* map through cardsList and display them one by one - use another component to display them? */}
             {cardsList}
         </div>
     )
