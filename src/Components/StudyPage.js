@@ -3,7 +3,7 @@ import { readDeck } from "../utils/api/index.js";
 import { useParams, useHistory } from "react-router-dom";
 import CardStudyView from "./Cards/CardStudyView.js";
 import NotEnoughCardsView from "./Cards/NotEnoughCardsView.js";
-import { Breadcrumb } from "./Common/Breadcrumb.js";
+import Breadcrumb from "./Common/Breadcrumb.js";
 
 
 function StudyPage() {

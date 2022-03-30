@@ -13,7 +13,7 @@ export default function DeckPageHeader({ deck }) {
             <div className="row">
                 <div className="col-9">
                     <Link to={``} type="button" className="btn btn-secondary">Edit</Link>
-                    <Link to={``} type="button" className="btn btn-primary">Study</Link>
+                    <Link to={`/decks/${deck.id}/study`} type="button" className="btn btn-primary">Study</Link>
                     <Link to={``} type="button" className="btn btn-primary">Add Cards</Link>
                 </div>
                 <div className="col">

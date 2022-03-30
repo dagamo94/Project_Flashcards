@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-function Card({ card: { id, front, back, deckId } }) {
+function Card({ card: { id, front, back }, handleDelete }) {
     return (
-        <div className="card">
+        <div className="card" id={id}>
             <div className="card-body">
                 <div className="row">
                     <div className="col">
@@ -14,9 +13,9 @@ function Card({ card: { id, front, back, deckId } }) {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col d-flex justify-content-end">
-                        <Link to={'/'} className="btn btn-secondary" type="button">Edit</Link>
-                        <Link to={'/'} className="btn btn-danger" type="button">Delete</Link>
+                    <div className="col d-flex justify-content-end" id={id}>
+                        <button className="btn btn-secondary" type="button">Edit</button>
+                        <button id={id} className="btn btn-danger" type="button" onClick={handleDelete}>Delete</button>
                     </div>
                 </div>
             </div>
