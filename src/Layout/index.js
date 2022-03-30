@@ -1,25 +1,26 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import NotFound from "./NotFound";
-import {listDecks} from "../utils/api/index.js";
+import { listDecks } from "../utils/api/index.js";
 import { Switch, Route } from "react-router-dom";
 import Home from "../Components/Home";
 import DeckPage from "../Components/Decks/DeckPage";
 import StudyPage from "../Components/StudyPage";
 import CreateDeck from "../Components/Decks/CreateDeck";
+import AddCard from "../Components/Cards/AddCard";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
-  
-  
+
+
   useEffect(() => {
     const ac = new AbortController();
-    async function fetchDecks(){
-      try{
+    async function fetchDecks() {
+      try {
         const response = await listDecks(ac.signal);
         setDecks(response);
-      }catch(err){
-        if(err.name === "AbortError"){
+      } catch (err) {
+        if (err.name === "AbortError") {
           console.log("Aborted:", err);
         }
       }
@@ -39,11 +40,15 @@ function Layout() {
 
         <Switch>
           <Route exact path="/">
-            <Home decks={decks}/>
+            <Home decks={decks} />
           </Route>
 
           <Route path="/decks/new">
             <CreateDeck />
+          </Route>
+
+          <Route path="/decks/:deckId/cards/new">
+            <AddCard />
           </Route>
 
           <Route path="/decks/:deckId/study">

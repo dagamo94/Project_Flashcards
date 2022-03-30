@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function DeckPageHeader({ deck }) {
+    const {url, deckId, path} = useParams();
     return (
         <div>
             <div className="row">
@@ -14,7 +15,7 @@ export default function DeckPageHeader({ deck }) {
                 <div className="col-9">
                     <Link to={``} type="button" className="btn btn-secondary">Edit</Link>
                     <Link to={`/decks/${deck.id}/study`} type="button" className="btn btn-primary">Study</Link>
-                    <Link to={``} type="button" className="btn btn-primary">Add Cards</Link>
+                    <Link to={`/decks/${deckId}/cards/new`} type="button" className="btn btn-primary">Add Card</Link>
                 </div>
                 <div className="col">
                     <Link to={``} type="button" className="btn btn-danger">Delete</Link>

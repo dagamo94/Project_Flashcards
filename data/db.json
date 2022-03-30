@@ -64,6 +64,24 @@
       "front": "How do you pass data 'down' to a React child component?",
       "back": "As properties or props",
       "deckId": 1
+    },
+    {
+      "front": "card 1",
+      "back": "card 1 back",
+      "deckId": 2,
+      "id": 4
+    },
+    {
+      "front": "card 2 ",
+      "back": "card 2 back",
+      "deckId": 2,
+      "id": 5
+    },
+    {
+      "front": "card 3 ",
+      "back": "card 3 back",
+      "deckId": 2,
+      "id": 6
     }
   ]
 }
