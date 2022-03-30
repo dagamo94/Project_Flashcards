@@ -3,7 +3,7 @@ import Deck from "./Decks/Deck";
 import { Link } from "react-router-dom";
 
 function Home({ decks }) {
-    const deckList = (<ul>{decks.map(deck => <Deck key={deck.id} deck={deck} />)}</ul>)
+    const deckList = (<ul>{decks.map(deck => <Deck id={deck.id} key={deck.id} deck={deck} />)}</ul>)
     return (
         <div className="container">
             <div className="row">

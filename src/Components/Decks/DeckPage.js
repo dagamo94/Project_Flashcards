@@ -8,7 +8,9 @@ import { Breadcrumb } from "../Common/Breadcrumb.js";
 function DeckPage() {
     const [cards, setCards] = useState([]);
     const { deckId } = useParams();
-    const cardsList = cards.map(card => <Card key={card.id} card={card}/>)
+
+    {/* map through cardsList and display them one by one - use another component to display them? */}
+    const cardsList = cards.map(card => <Card id={card.id} key={card.id} card={card}/>)
 
     useEffect(() => {
         const ac = new AbortController();
@@ -34,8 +36,8 @@ function DeckPage() {
         <div>
             <Breadcrumb/>
             Deck ID: {deckId}
-            {/* map through cardsList and display them one by one - use another component to display them? */}
-            {cardsList}
+            <h2>Cards</h2>
+            {cards.length ? cardsList : <p>Loading...</p>}
         </div>
     )
 }
