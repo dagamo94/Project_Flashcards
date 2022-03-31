@@ -28,8 +28,6 @@ function Layout() {
     }
 
     fetchDecks();
-
-    console.log("Decks", decks);
     return () => ac.abort();
   }, []);
 

@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { readDeck } from "../utils/api/index.js";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import CardStudyView from "./Cards/CardStudyView.js";
 import NotEnoughCardsView from "./Cards/NotEnoughCardsView.js";
-import Breadcrumb from "./Common/Breadcrumb.js";
-
 
 function StudyPage() {
     const [cards, setCards] = useState([]);
     const [currCard, setCurrCard] = useState(0);
-    const [deckTitle, setDeckTitle] = useState("");
+    const [deck, setDeck] = useState({});
     const [flipped, setFlipped] = useState(false);
     const { deckId } = useParams();
 
@@ -42,7 +40,7 @@ function StudyPage() {
             try {
                 const response = await readDeck(deckId, ac.signal);
                 setCards(response.cards);
-                setDeckTitle(response.name);
+                setDeck(response);
             } catch (err) {
                 if (err.name === "AbortError") {
                     console.log("Aborted:", err);
@@ -51,8 +49,6 @@ function StudyPage() {
         }
 
         fetchDeck();
-
-        console.log("Cards", cards, cards.length);
         return () => ac.abort();
     }, []);
 
@@ -76,8 +72,14 @@ function StudyPage() {
 
     return (
         <div>
-            <Breadcrumb/>
-            <h1>Study: {deckTitle}</h1>
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <Link to={`/`} className="breadcrumb-item">Home</Link>
+                    <Link to={`/decks/${deckId}`} className="breadcrumb-item">{deck.name}</Link>
+                    <Link to={`/decks/${deckId}/study`} className="breadcrumb-item active" aria-current="page">Study</Link>
+                </ol>
+            </nav>
+            <h1>Study: {deck.name}</h1>
             {displayCards()}
         </div>
     )

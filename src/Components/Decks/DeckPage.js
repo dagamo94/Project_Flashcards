@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { deleteDeck, readDeck } from "../../utils/api/index.js";
 import { deleteCard } from "../../utils/api/index.js";
 import Breadcrumb from "../Common/Breadcrumb.js";
@@ -14,12 +14,12 @@ function DeckPage() {
     const history = useHistory();
 
     {/* map through cardsList and display them one by one - use another component to display them? */ }
-    const cardsList = cards.map(card => <Card id={card.id} key={card.id} card={card} handleDelete={handleDelete}/>)
+    const cardsList = cards.map(card => <Card id={card.id} key={card.id} card={card} handleDelete={handleDelete} />)
 
-    async function handleDelete(e){
+    async function handleDelete(e) {
         e.preventDefault();
         const cardId = e.target.id;
-        if(window.confirm("Delete Card?\n\nYou will not be able to recover it.")){
+        if (window.confirm("Delete Card?\n\nYou will not be able to recover it.")) {
             await deleteCard(cardId);
             history.go(0);
         }
@@ -39,24 +39,26 @@ function DeckPage() {
         }
 
         fetchDeck();
-
-        console.log("Cards", cards);
         return () => ac.abort();
     }, []);
 
-    async function handleDeckDelete(e){
+    async function handleDeckDelete(e) {
         e.preventDefault();
-        if(window.confirm("Delete this deck?\n\nYou will not be able to recover it.")){
+        if (window.confirm("Delete this deck?\n\nYou will not be able to recover it.")) {
             await deleteDeck(deckId);
             history.push('/');
             history.go(0);
         }
     }
 
-    console.log("Params: ", useParams());
     return (
         <div className="container">
-            <Breadcrumb />
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <Link to={`/`} className="breadcrumb-item">Home</Link>
+                    <Link to={`/decks/${deck.id}`} className="breadcrumb-item active">{deck.name}</Link>
+                </ol>
+            </nav>
             {deck ? <DeckPageHeader deck={deck} handleDeckDelete={handleDeckDelete} /> : <p>Loading...</p>}
 
             <div className="row">

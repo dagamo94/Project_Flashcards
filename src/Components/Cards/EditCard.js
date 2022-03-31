@@ -51,9 +51,7 @@ export default function EditCard() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log("Updated Card State: ", card);
         const response = await updateCard(card);
-        console.log("Card Update Response: ", response);
         history.goBack();
     }
 

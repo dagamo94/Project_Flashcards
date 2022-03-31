@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { readDeck, createCard } from "../../utils/api";
-import Breadcrumb from "../Common/Breadcrumb";
 import CardForm from "./CardForm";
 
 export default function AddCard() {
@@ -12,21 +11,21 @@ export default function AddCard() {
     }
 
     const [deck, setDeck] = useState({})
-    const [formData, setFormData] = useState({...INITIAL_FORM_STATE});
+    const [formData, setFormData] = useState({ ...INITIAL_FORM_STATE });
 
     const history = useHistory();
-    const {deckId} = useParams();
+    const { deckId } = useParams();
 
-    useEffect(()=>{
+    useEffect(() => {
         const ac = new AbortController();
-        async function fetchDeck(){
-            try{
+        async function fetchDeck() {
+            try {
                 const response = await readDeck(deckId, ac.signal);
                 setDeck(response);
-            }catch(err){
-                if(err.name === "AbortError"){
+            } catch (err) {
+                if (err.name === "AbortError") {
                     console.log("Aborted", err);
-                }else{
+                } else {
                     throw err;
                 }
             }
@@ -36,16 +35,15 @@ export default function AddCard() {
         return () => ac.abort();
     }, []);
 
-    async function handleSubmit (e){
+    async function handleSubmit(e) {
         e.preventDefault();
         const response = await createCard(deckId, formData);
-        console.log("Card Created: ", response);
-        setFormData({...INITIAL_FORM_STATE});
+        setFormData({ ...INITIAL_FORM_STATE });
 
     }
 
     const handleChange = event => {
-        const {target} = event;
+        const { target } = event;
         setFormData({
             ...formData,
             [target.name]: target.value
@@ -54,9 +52,15 @@ export default function AddCard() {
 
     return (
         <div>
-            <Breadcrumb />
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <Link to={`/`} className="breadcrumb-item">Home</Link>
+                    <Link to={`/decks/${deck.id}`} className="breadcrumb-item">{deck.name}</Link>
+                    <Link to={``} className="breadcrumb-item active" aria-current="page">Add Card</Link>
+                </ol>
+            </nav>
             <h3>{deck.name}: Add Card</h3>
-            <CardForm 
+            <CardForm
                 formData={formData}
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}

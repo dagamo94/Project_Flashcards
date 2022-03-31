@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from "react";
-import {useParams, useHistory} from "react-router-dom";
+import {useParams, useHistory, Link} from "react-router-dom";
 import { readDeck, updateDeck } from "../../utils/api";
-import Breadcrumb from "../Common/Breadcrumb";
-import Deck from "./Deck";
 import DeckForm from "./DeckForm";
 
 export default function EditDeck(){
@@ -58,6 +56,13 @@ export default function EditDeck(){
     // RETURN DECKFORM COMPONENT
     return (
         <div>
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <Link to={`/`} className="breadcrumb-item">Home</Link>
+                    <Link to={`/decks/${deck.id}`} className="breadcrumb-item">{deck.name}</Link>
+                    <Link to={`/decks/${deck.id}/edit`} className="breadcrumb-item active" aria-current="page">Edit Deck</Link>
+                </ol>
+            </nav>
             <h2>Edit Deck</h2>
             <DeckForm
                 handleSubmit={handleSubmit}
