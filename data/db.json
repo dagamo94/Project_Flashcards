@@ -4,6 +4,11 @@
       "id": 1,
       "name": "Rendering in React - edit",
       "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
+    },
+    {
+      "name": "Deck with 2 cards",
+      "description": "Just a deck with two random cards in it",
+      "id": 2
     }
   ],
   "cards": [
@@ -24,6 +29,18 @@
       "front": "How do you pass data 'down' to a React child component? - edit",
       "back": "As properties or props - edit",
       "deckId": 1
+    },
+    {
+      "front": "card 1",
+      "back": "card 1 back",
+      "deckId": 2,
+      "id": 4
+    },
+    {
+      "front": "card 2",
+      "back": "card 2 back",
+      "deckId": 2,
+      "id": 5
     }
   ]
 }
