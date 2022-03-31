@@ -33,9 +33,9 @@ export default function DeckForm({handleSubmit, formData, handleChange, state}) 
                 />
             </div>
             {state ? 
-            (<button className="btn btn-secondary" type="button" onClick={() => history.goBack()}>Cancel</button>) 
+            (<button className="btn btn-secondary mr-2" type="button" onClick={() => history.goBack()}>Cancel</button>) 
             : 
-            (<Link to={`/`} className="btn btn-secondary" type="button">Cancel</Link>)}
+            (<Link to={`/`} className="btn btn-secondary mr-2" type="button">Cancel</Link>)}
 
             <button className="btn btn-primary" type="submit">Submit</button>
         </form>

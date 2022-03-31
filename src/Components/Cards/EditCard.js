@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { readDeck, readCard, updateCard } from "../../utils/api";
-import { useParams, useHistory } from "react-router-dom";
-import Breadcrumb from "../Common/Breadcrumb";
+import { useParams, useHistory, Link } from "react-router-dom";
 import CardForm from "./CardForm";
 
 export default function EditCard() {
     const [deck, setDeck] = useState({});
     const [card, setCard] = useState({});
+    const [editing, setEditing] = useState(true);
 
     const { deckId, cardId } = useParams();
     const history = useHistory();
@@ -53,6 +53,7 @@ export default function EditCard() {
         e.preventDefault();
         const response = await updateCard(card);
         history.goBack();
+        setEditing(false);
     }
 
     function handleChange(event) {
@@ -66,12 +67,19 @@ export default function EditCard() {
 
     return (
         <div>
-            <Breadcrumb />
-            edit card page
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <Link to={`/`} className="breadcrumb-item">Home</Link>
+                    <Link to={`/decks/${deck.id}`} className="breadcrumb-item">{deck.name}</Link>
+                    <Link to={`/decks/${deck.id}/cards/${card.id}/edit`} className="breadcrumb-item active" aria-current="page">Edit Card</Link>
+                </ol>
+            </nav>
+            <h2>Edit Card</h2>
             <CardForm
                 formData={card}
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
+                state={editing}
             />
         </div>
     )

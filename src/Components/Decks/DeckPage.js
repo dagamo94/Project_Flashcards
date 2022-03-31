@@ -61,7 +61,7 @@ function DeckPage() {
             </nav>
             {deck ? <DeckPageHeader deck={deck} handleDeckDelete={handleDeckDelete} /> : <p>Loading...</p>}
 
-            <div className="row">
+            <div className="row mt-4">
                 <div className="col">
                     <h2>Cards</h2>
                 </div>

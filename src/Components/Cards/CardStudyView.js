@@ -11,7 +11,7 @@ function CardStudyView({ cards, currCard, handleFlip, handleNext, flipped }) {
                 
                 <p>{!flipped ? card.front : card.back}</p>
 
-                <Link className="btn btn-secondary" to={``} onClick={handleFlip}>Flip</Link>
+                <Link className="btn btn-secondary mr-2" to={``} onClick={handleFlip}>Flip</Link>
 
                 {!flipped ? (<span></span>) : (
                     <Link className="btn btn-primary" to={``} onClick={handleNext}>Next</Link>

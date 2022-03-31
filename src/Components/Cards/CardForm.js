@@ -2,7 +2,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-export default function CardForm({handleSubmit, handleChange, formData}){
+export default function CardForm({ handleSubmit, handleChange, formData, state }) {
     const history = useHistory();
 
     return (
@@ -31,8 +31,13 @@ export default function CardForm({handleSubmit, handleChange, formData}){
                     className="form-control"
                 />
             </div>
-            <button className="btn btn-secondary" type="button" onClick={() => history.goBack()}>Done</button>
-            <button className="btn btn-primary" type="submit">Save</button> 
+            {state ?
+                (<div><button className="btn btn-secondary mr-2" type="button" onClick={() => history.goBack()}>Cancel</button>
+                    <button className="btn btn-primary" type="submit">Submit</button> </div>)
+                :
+                (<div><button className="btn btn-secondary mr-2" type="button" onClick={() => history.goBack()}>Done</button>
+                    <button className="btn btn-primary" type="submit">Save</button> </div>)
+            }
         </form>
     )
 }

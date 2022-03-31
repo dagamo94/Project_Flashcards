@@ -34,11 +34,11 @@ function Deck({ deck }) {
         </div>
         <div className="row">
           <div className="col">
-            <Link to={`/decks/${id}`} className="btn btn-secondary" style={{marginRight: 10}}><i class="bi bi-eye-fill"></i> View</Link>
-            <Link to={`/decks/${id}/study`} className="btn btn-primary"><i class="bi bi-journal-bookmark-fill"></i> Study</Link>
+            <Link to={`/decks/${id}`} className="btn btn-secondary" style={{marginRight: 10}}><i className="bi bi-eye-fill"></i> View</Link>
+            <Link to={`/decks/${id}/study`} className="btn btn-primary"><i className="bi bi-journal-bookmark-fill"></i> Study</Link>
           </div>
           <div className="col d-flex justify-content-end">
-            <button className="btn btn-danger" type="button" onClick={handleDelete}><i class="bi bi-trash-fill"></i></button>
+            <button className="btn btn-danger" type="button" onClick={handleDelete}><i className="bi bi-trash-fill"></i></button>
           </div>
         </div>
       </div>

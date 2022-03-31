@@ -66,7 +66,12 @@ function StudyPage() {
                 </div>
             );
         } else {
-            return <NotEnoughCardsView cards={cards} />;
+            return (
+                <div>
+                    <NotEnoughCardsView cards={cards} />
+                    <Link to={`/decks/${deckId}/cards/new`} type="button" className="btn btn-primary"><i className="bi bi-plus-lg" style={{ fontWeight: 900 }}></i> Add Cards</Link>
+                </div>
+            );
         }
     }
 
@@ -79,7 +84,7 @@ function StudyPage() {
                     <Link to={`/decks/${deckId}/study`} className="breadcrumb-item active" aria-current="page">Study</Link>
                 </ol>
             </nav>
-            <h1>Study: {deck.name}</h1>
+            <h1>{deck.name}: Study</h1>
             {displayCards()}
         </div>
     )
