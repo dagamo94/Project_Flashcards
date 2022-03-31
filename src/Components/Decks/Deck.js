@@ -18,21 +18,27 @@ function Deck({ deck }) {
 
   return (
     <div className="card card-w-100">
-      <div className="container card-body">
+      <div className="card-body">
         <div className="row">
           <div className="col">
-            <h5 className="card-title">{name}</h5>
+            <h5>{name}</h5>
           </div>
           <div className="col d-flex justify-content-end text-muted">
-            <p>{cards.length} cards</p>
+            <p style={{fontSize: 12, fontWeight: 600}}>{cards.length} cards</p>
           </div>
         </div>
         <div className="row">
           <div className="col">
-            <p className="card-text">{description}</p>
-            <Link to={`/decks/${id}`} className="btn btn-secondary">View</Link>
-            <Link to={`/decks/${id}/study`} className="btn btn-primary">Study</Link>
-            <button className="btn btn-danger" type="button" onClick={handleDelete}>Delete</button>
+            <p>{description}</p>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <Link to={`/decks/${id}`} className="btn btn-secondary" style={{marginRight: 10}}><i class="bi bi-eye-fill"></i> View</Link>
+            <Link to={`/decks/${id}/study`} className="btn btn-primary"><i class="bi bi-journal-bookmark-fill"></i> Study</Link>
+          </div>
+          <div className="col d-flex justify-content-end">
+            <button className="btn btn-danger" type="button" onClick={handleDelete}><i class="bi bi-trash-fill"></i></button>
           </div>
         </div>
       </div>
