@@ -9,6 +9,11 @@
       "name": "Deck with 2 cards",
       "description": "Just a deck with two random cards in it",
       "id": 2
+    },
+    {
+      "name": "Backend development",
+      "description": "Node and Express - Creating a server for frontend applications",
+      "id": 3
     }
   ],
   "cards": [
@@ -41,6 +46,72 @@
       "back": "card 2 back",
       "deckId": 2,
       "id": 5
+    },
+    {
+      "front": "const express = require(\"express\");",
+      "back": "Require the Express package and assign it to a value",
+      "deckId": 3,
+      "id": 6
+    },
+    {
+      "front": "const app = express();",
+      "back": "The Express package exports a function. When you invoke that function, you get a new Express application and assign it to a variable.",
+      "deckId": 3,
+      "id": 7
+    },
+    {
+      "front": "module.exports = app;",
+      "back": "You export the Express application to be used in the server.js file",
+      "deckId": 3,
+      "id": 8
+    },
+    {
+      "front": "SERVER file - const { PORT = 5000 } = process.env;",
+      "back": "With destructuring and default arguments, set the variable PORT to be equal to whatever value is found inside of process.env or default 5000.",
+      "deckId": 3,
+      "id": 9
+    },
+    {
+      "front": "SERVER file - const app = require(\"./app\");\n",
+      "back": "Require the Express application that you exported",
+      "deckId": 3,
+      "id": 10
+    },
+    {
+      "front": "SERVER file - const listener = () => console.log(`Listening on Port ${PORT}!`);",
+      "back": "This function will run when the server successfully starts.",
+      "deckId": 3,
+      "id": 11
+    },
+    {
+      "front": "SERVER file - app.listen(PORT, listener);",
+      "back": "The listen() method on your Express application is what runs the server. It takes two arguments: a port number and a function. The PORT variable defines where your server is running, and the listener() function will get called as soon as the server has successfully started.",
+      "deckId": 3,
+      "id": 12
+    },
+    {
+      "front": "Middleware",
+      "back": "A function that an Express server runs berween receiving a request and responding to that request.",
+      "deckId": 3,
+      "id": 13
+    },
+    {
+      "front": "Query String",
+      "back": "Text that comes at the ned of a URL and provides additional information to a given route.",
+      "deckId": 3,
+      "id": 14
+    },
+    {
+      "front": "Query Parameter",
+      "back": "A key-value pair in a query string, used to filter the resources requested from the server.",
+      "deckId": 3,
+      "id": 15
+    },
+    {
+      "front": "Route Parameter",
+      "back": "A part of the URL that changes depending on the data to be displayed on the website, used to access parts of a URL by storing the value in a variable",
+      "deckId": 3,
+      "id": 16
     }
   ]
 }
